@@ -3,25 +3,18 @@ pipeline {
 
     stages {
        
-        stage('Build') {
+        stage('Run Python Script') {
             steps {
-                // Compile the Java code
-                sh 'javac HelloWorld.java'
-            }
-        }
-
-        stage('Run') {
-            steps {
-                // Run the compiled Java program
-                sh 'java HelloWorld'
+                // Execute the Python script
+                sh 'python hello_chatgpt.py'
             }
         }
     }
 
     post {
         always {
-            // Clean up any artifacts or temporary files if necessary
-            sh 'rm -f HelloWorld.class'
+            // Clean up or post-execution steps if necessary
+            echo 'Python script execution completed.'
         }
     }
 }
